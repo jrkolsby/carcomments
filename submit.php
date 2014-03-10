@@ -37,8 +37,6 @@ if (isset($_COOKIE[carcomments])) {
 	}
 	if ($validcomment === true && $validplate === true) {
 		mysql_query("INSERT INTO comments (`plate`, `comment`, `numdate`, `date`) VALUES ('$plate', '$comment', '$numdate', '$date')");
-		$message = "Plate: " . $plate . "\r\n" . "Comment: " . $comment;
-		mail("jrkolsby@mac.com", "Someone Submitted To CarComments!", $message);
 		setcookie("carcomments", "true", time()+300);
 		print "<meta http-equiv='REFRESH' content='0;url=http://www.jmkl.co/carcomments/'>";
 	}
