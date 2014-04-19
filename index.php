@@ -60,21 +60,21 @@ $usedplates = array(
 $query = "SELECT * FROM comments ORDER BY numdate DESC"; 
 $result = mysql_query($query) or die(mysql_error());
 while($row = mysql_fetch_array($result)){
-	$currentplate = $row[plate];
+	$currentplate = $row['plate'];
 	if (!in_array($currentplate, $usedplates)) {
 		array_push($usedplates, $currentplate);
 		print "<div class='post'>";
 		print "<div class='plate'>";
-		print "<h1>" . $row[plate] . "</h1>";
+		print "<h1>" . $row['plate'] . "</h1>";
 		print "</div>";
 		$commentquery = "SELECT * FROM comments ORDER BY numdate ASC"; 
 		$commentresult = mysql_query($commentquery) or die(mysql_error());
 		while($row = mysql_fetch_array($commentresult)){
-			if ($row[plate] === $currentplate) {
+			if ($row['plate'] === $currentplate) {
 				print "<div class='comment'>";
-				print $row[comment];
+				print $row['comment'];
 				print "<div class='date'>";
-				print $row[date];
+				print $row['date'];
 				print "</div>";
 				print "</div>";
 			};
